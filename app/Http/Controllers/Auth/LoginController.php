@@ -111,7 +111,11 @@ class LoginController extends Controller
                     //$dd_cek_username->passwd = $request->password;
                     $dd_cek_username->update();    
                     $passwd = 'null';
-                    Auth::attempt(['username' => $request->username, 'password' => $passwd]);               
+                    //Auth::attempt(['username' => $request->username, 'password' => $passwd]); 
+                    if (auth()->attempt(['username' => $request->username, 'password' => $passwd])) {
+                        //JIKA BERHASIL, MAKA REDIRECT KE HALAMAN HOME
+                        return view('depan');
+                    }              
                 }
                 else {
                     //salah password

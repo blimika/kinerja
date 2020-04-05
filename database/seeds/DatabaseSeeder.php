@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
          DB::table('users')->delete();
         //insert some dummy records
         DB::table('users')->insert(array(
-        array('nama'=>'Super Admin', 'password'=>bcrypt('super'),'nipbps'=>'520000000','nipbaru'=>'520000000','email'=>'admin@bpsntb.id','username'=>'admin','jabatan'=>'Kepala','satuankerja'=>'Admin BPSNTB','kodeunit'=>'52000','urlfoto'=>'https://via.placeholder.com/100x100','jk'=>'1','aktif'=>'1','level'=>'9','isLokal'=>'1','created_at'=>NOW(),'updated_at'=>NOW()),
+        array('nama'=>'Super Admin', 'password'=>bcrypt('super'),'nipbps'=>'520000000','nipbaru'=>'520000000','email'=>'admin@bpsntb.id','username'=>'admin','jabatan'=>'Kepala','satuankerja'=>'Admin BPSNTB','kodeunit'=>'52000','kodebps'=>'5200','urlfoto'=>'https://via.placeholder.com/100x100','jk'=>'1','aktif'=>'1','level'=>'9','isLokal'=>'1','created_at'=>NOW(),'updated_at'=>NOW()),
          ));
 
         //golongan
@@ -86,7 +86,7 @@ class DatabaseSeeder extends Seeder
          array('unit_kode'=>'52541', 'unit_nama'=>'Seksi Statistik Harga Konsumen dan Harga Perdagangan Besar', 'unit_parent'=>'52540','unit_jenis'=>  '1','unit_eselon'=> '4'),
          array('unit_kode'=>'52542', 'unit_nama'=>'Seksi Statistik Keuangan Dan Harga Produsen', 'unit_parent'=>'52540', 'unit_jenis'=>  '1', 'unit_eselon'=>'4'),
          array('unit_kode'=>'52543', 'unit_nama'=>'Seksi Statistik Niaga dan Jasa', 'unit_parent'=>'52540','unit_jenis'=>'1','unit_eselon'=> '4'),
-         array('unit_kode'=>'52550', 'unit_nama'=>'Bidang Nerwilis', 'unit_parent'=>'52000','unit_jenis'=> '1','unit_eselon'=>'3'),
+         array('unit_kode'=>'52550', 'unit_nama'=>'Bidang Neraca Wilayah dan Analisis Statistik', 'unit_parent'=>'52000','unit_jenis'=> '1','unit_eselon'=>'3'),
          array('unit_kode'=>'52551', 'unit_nama'=>'Seksi Neraca Produksi','unit_parent'=> '52550','unit_jenis'=>  '1', 'unit_eselon'=>'4'),
          array('unit_kode'=>'52552', 'unit_nama'=>'Seksi Neraca Konsumsi','unit_parent'=> '52550', 'unit_jenis'=> '1', 'unit_eselon'=> '4'),
          array('unit_kode'=>'52553', 'unit_nama'=>'Seksi Analisis Statistik Lintas Sektor', 'unit_parent'=>'52550', 'unit_jenis'=>  '1', 'unit_eselon'=> '4'),
@@ -94,6 +94,22 @@ class DatabaseSeeder extends Seeder
          array('unit_kode'=>'52561', 'unit_nama'=>'Seksi Integrasi Pengolahan Data', 'unit_parent'=>'52560','unit_jenis'=>'1', 'unit_eselon'=> '4'),
          array('unit_kode'=>'52562', 'unit_nama'=>'Seksi Jaringan dan Rujukan Statistik', 'unit_parent'=>'52560','unit_jenis'=>'1','unit_eselon'=>  '4'),
          array('unit_kode'=>'52563', 'unit_nama'=>'Seksi Diseminasi dan Layanan Statistik', 'unit_parent'=>'52560','unit_jenis'=>'1', 'unit_eselon'=> '4'),
+          ));
+          //kode bps
+         DB::table('t_kodebps')->delete();
+         //insert some dummy records
+         DB::table('t_kodebps')->insert(array(
+         array('bps_kode'=>'5200', 'bps_nama'=>'BPS Provinsi NTB','bps_jenis'=>'1'),
+         array('bps_kode'=>'5201', 'bps_nama'=>'BPS Kabupaten Lombok Barat','bps_jenis'=>'2'),
+         array('bps_kode'=>'5202', 'bps_nama'=>'BPS Kabupaten Lombok Tengah','bps_jenis'=>'2'),
+         array('bps_kode'=>'5203', 'bps_nama'=>'BPS Kabupaten Lombok Timur','bps_jenis'=>'2'),
+         array('bps_kode'=>'5204', 'bps_nama'=>'BPS Kabupaten Sumbawa','bps_jenis'=>'2'),
+         array('bps_kode'=>'5205', 'bps_nama'=>'BPS Kabupaten Dompu','bps_jenis'=>'2'),
+         array('bps_kode'=>'5206', 'bps_nama'=>'BPS Kabupaten Bima','bps_jenis'=>'2'),
+         array('bps_kode'=>'5207', 'bps_nama'=>'BPS Kabupaten Sumbawa Barat','bps_jenis'=>'2'),
+         array('bps_kode'=>'5208', 'bps_nama'=>'BPS Kabupaten Lombok Utara','bps_jenis'=>'2'),
+         array('bps_kode'=>'5271', 'bps_nama'=>'BPS Kota Mataram','bps_jenis'=>'2'),
+         array('bps_kode'=>'5272', 'bps_nama'=>'BPS Kota Bima','bps_jenis'=>'2'),
           ));
     }
 }

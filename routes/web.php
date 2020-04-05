@@ -24,6 +24,9 @@ Route::get('/', function () {
 */
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'MasterController@index')->name('dashboard.index');
+    Route::get('/pegawai/list', 'PegawaiController@index')->name('pegawai.list');
+    Route::post('/pegawai/sync', 'PegawaiController@syncData')->name('pegawai.sync');
+    Route::post('/cek/community', 'PegawaiController@cekCommunity')->name('cek.community');
 });
 
 //Route::get('logout', 'Auth\LoginController@logout');

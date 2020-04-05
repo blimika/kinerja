@@ -23,7 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('peg_gol',2)->nullable();
             $table->string('jabatan',20);
-            $table->string('kodeunit',5);
+            $table->string('kodeunit',5)->nullable();
+            $table->string('kodebps',4);
             $table->string('satuankerja');
             $table->string('urlfoto');
             $table->boolean('jk')->unsigned();
