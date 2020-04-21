@@ -395,4 +395,14 @@ Class Generate {
             }
         return $code_gen;
 	}
+	public static function PecahNip($nipbaru)
+	{
+		//nip 198203192004121002 19820319 200412 1 002
+		$nip1 = substr($nipbaru,0,8);
+		$nip2 = substr($nipbaru,8,6);
+		$nip3 = substr($nipbaru,-4,1);
+		$nip4 = substr($nipbaru,-3,3);
+		$nip = $nip1.' '.$nip2.' '.$nip3.' '.$nip4;
+		return $nip;
+	}
 }

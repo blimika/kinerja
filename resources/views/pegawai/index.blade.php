@@ -60,12 +60,29 @@
                                 @foreach ($dataPegawai as $item)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td></td>
-                                        <td>{{$item->nama}}</td>
+                                        <td><img class="img-circle" src="{{$item->urlfoto}}" alt="User profile picture" height="50px" width="50px"></td>
+                                        <td>
+                                            {{$item->nama}}
+                                            <br />
+                                            NIP : {{Generate::PecahNip($item->nipbaru)}}
+                                            <br />
+                                            <small>
+                                                {{$item->jabatan}} {{$item->satuankerja}}
+                                            </small>
+                                        </td>
                                         <td>{{$item->username}}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{$item->Level->level_nama}}</td>
+                                        <td>@if ($item->aktif==1)
+                                            <span class="label label-rounded label-info">Aktif</span>
+                                            @else 
+                                            <span class="label label-rounded label-danger">Tidak aktif</span>
+                                            @endif</td>
+                                        <td>
+                                            {{$item->lastip}} <br />
+                                            @if ($item->lastlogin)
+                                                {{\Carbon\Carbon::parse($item->lastlogin)->diffForHumans()}}
+                                            @endif
+                                        </td>
                                         <td></td>
                                     </tr>
                                 @endforeach

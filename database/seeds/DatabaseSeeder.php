@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
         DB::table('t_unitkerja')->delete();
          //insert some dummy records
          DB::table('t_unitkerja')->insert(array(
-         array('unit_kode'=>'52000', 'unit_nama'=>'BPS Provinsi NTB', 'unit_parent'=>NULL, 'unit_jenis'=>'1', 'unit_eselon'=> '2'),
+         array('unit_kode'=>'52000', 'unit_nama'=>'BPS Propinsi', 'unit_parent'=>NULL, 'unit_jenis'=>'1', 'unit_eselon'=> '2'),
          array('unit_kode'=>'52510', 'unit_nama'=>'Bagian Tata Usaha', 'unit_parent'=>'52000', 'unit_jenis'=>'1','unit_eselon'=> '3'),
          array('unit_kode'=>'52511', 'unit_nama'=>'Subbagian Bina Program', 'unit_parent'=>'52510', 'unit_jenis'=>'1', 'unit_eselon'=>'4'),
          array('unit_kode'=>'52512', 'unit_nama'=>'Subbagian Kepegawaian & Hukum', 'unit_parent'=>'52510', 'unit_jenis'=>'1',  'unit_eselon'=>'4'),
@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
          array('unit_kode'=>'52551', 'unit_nama'=>'Seksi Neraca Produksi','unit_parent'=> '52550','unit_jenis'=>  '1', 'unit_eselon'=>'4'),
          array('unit_kode'=>'52552', 'unit_nama'=>'Seksi Neraca Konsumsi','unit_parent'=> '52550', 'unit_jenis'=> '1', 'unit_eselon'=> '4'),
          array('unit_kode'=>'52553', 'unit_nama'=>'Seksi Analisis Statistik Lintas Sektor', 'unit_parent'=>'52550', 'unit_jenis'=>  '1', 'unit_eselon'=> '4'),
-         array('unit_kode'=>'52560', 'unit_nama'=>'Bidang IPDS', 'unit_parent'=>'52000', 'unit_jenis'=> '1','unit_eselon'=> '3'),
+         array('unit_kode'=>'52560', 'unit_nama'=>'Bidang Integrasi Pengolahan dan Diseminasi Statistik', 'unit_parent'=>'52000', 'unit_jenis'=> '1','unit_eselon'=> '3'),
          array('unit_kode'=>'52561', 'unit_nama'=>'Seksi Integrasi Pengolahan Data', 'unit_parent'=>'52560','unit_jenis'=>'1', 'unit_eselon'=> '4'),
          array('unit_kode'=>'52562', 'unit_nama'=>'Seksi Jaringan dan Rujukan Statistik', 'unit_parent'=>'52560','unit_jenis'=>'1','unit_eselon'=>  '4'),
          array('unit_kode'=>'52563', 'unit_nama'=>'Seksi Diseminasi dan Layanan Statistik', 'unit_parent'=>'52560','unit_jenis'=>'1', 'unit_eselon'=> '4'),

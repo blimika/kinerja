@@ -63,12 +63,23 @@ class PegawaiController extends Controller
                             if ($hasil[0]!=false) {
                                 //cek kepala bps ada atau tidak
                                 $count_peg = User::where('nipbps','=',$hasil[0]['nipbps'])->count();
+                                $kode_unit = UnitKerja::where('unit_nama','=',$hasil[$i]['satuankerja'])->first();
+                                if ($kode_unit)
+                                    {
+                                        $unit_kode = $kode_unit->unit_kode;
+                                    }
+                                    else 
+                                    { 
+                                        $unit_kode = NULL;
+                                    }
                                 if ($count_peg>0) {
                                     //jika sudah ada update isiannya nama, satuan, urlfoto
                                     $data = User::where('nipbps','=',$hasil[$i]['nipbps'])->first();
                                     $data->nama = $hasil[$i]['nama'];
                                     $data->satuankerja = $hasil[$i]['satuankerja'];
                                     $data->urlfoto = $hasil[$i]['urlfoto'];
+                                    $data->level = '5';
+                                    $data->kodeunit = $unit_kode;
                                     $data->update();
                                     $tot++;
                                 }
@@ -96,6 +107,7 @@ class PegawaiController extends Controller
                                     $data->urlfoto = $hasil[0]['urlfoto'];
                                     $data->jk = substr($hasil[0]['nippanjang'],-4,1);
                                     $data->level = '5';
+                                    $data->kodeunit = $unit_kode;
                                     $data->kodebps = $request->wilayah;
                                     $data->password = bcrypt('null');
                                     $data->save();
@@ -108,12 +120,36 @@ class PegawaiController extends Controller
                             for ($j=0;$j<count($hasil[$i]);$j++)
                                 {
                                     $count_peg = User::where('nipbps','=',$hasil[$i][$j]['nipbps'])->count();
+                                    $kode_unit = UnitKerja::where('unit_nama','=',$hasil[$i][$j]['satuankerja'])->first();
+                                    if ($kode_unit)
+                                    {
+                                        $unit_kode = $kode_unit->unit_kode;
+                                        if ($kode_unit->unit_eselon<3)
+                                        {
+                                            $level = 5;
+                                        }
+                                        elseif ($kode_unit->unit_eselon<4)
+                                        {
+                                            $level = 4;
+                                        }
+                                        else 
+                                        {
+                                            $level=2;
+                                        }
+                                    }
+                                    else 
+                                    { 
+                                        $unit_kode = NULL;
+                                        $level = 2;
+                                    }
                                     if ($count_peg>0) {
                                         //jika sudah ada update isiannya nama, satuan, urlfoto
                                         $data = User::where('nipbps','=',$hasil[$i][$j]['nipbps'])->first();
                                         $data->nama = $hasil[$i][$j]['nama'];
                                         $data->satuankerja = $hasil[$i][$j]['satuankerja'];
                                         $data->urlfoto = $hasil[$i][$j]['urlfoto'];
+                                        $data->kodeunit = $unit_kode;
+                                        $data->level = $level;
                                         $data->update();
                                         $tot++;
                                     }
@@ -140,7 +176,8 @@ class PegawaiController extends Controller
                                         $data->satuankerja = $hasil[$i][$j]['satuankerja'];
                                         $data->urlfoto = $hasil[$i][$j]['urlfoto'];
                                         $data->jk = substr($hasil[$i][$j]['nippanjang'],-4,1);
-                                        $data->level = '2';
+                                        $data->level = $level;
+                                        $data->kodeunit = $unit_kode;
                                         $data->kodebps = $request->wilayah;
                                         $data->password = bcrypt('null');
                                         $data->save();
@@ -161,8 +198,8 @@ class PegawaiController extends Controller
             else 
             {
                 //kabkota
-                $pesan_error="BERHASIL : data pegawai sudah disinkronisasi";
-            $pesan_warna='success';
+                $pesan_error="BERHASIL : data pegawai kabkota sudah disinkronisasi";
+                $pesan_warna='success';
             }
             //batas true berhasil login
         }
